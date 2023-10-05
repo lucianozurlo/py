@@ -1,0 +1,53 @@
+{% extends 'CarDealerApp/base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<!-- Page content-->
+<div class="container mt-5 mb-md-4 py-5">
+    <div class="row py-md-1">
+        <div class="col-lg-12">
+
+            <div class="align-items-center justify-content-between pt-4 mb-2">
+                <h1 class="mb-lg-4 text-light">Puntos de Retiro</h1>
+                <p class="mb-4 pb-lg-3 fs-lg text-light opacity-70">We believe that car buying and selling
+                    should be straight-forward and enjoyable, not time-consuming, complicated or stressful.</p>
+            </div>
+
+            <div class="row">
+
+                {% for punto in puntosDeRetiro %}
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card card-light border-light">
+                        <div class="card-body">
+                            <ul class="list-unstyled d-block mb-0 mx-auto puntos" style="max-width: 16rem;">
+                                <h2 class="h4 text-light fw-normal py-1 mb-2">{{ punto.localidad }}</h2>
+                                <li class="d-flex">
+                                    <i class="fi-home text-primary fs-sm mt-1 me-2"></i>
+                                    <span class="text-light">
+                                        {{ punto.direccion }},
+                                        {{ punto.localidad }},
+                                        {{ punto.provincia }}</span>
+                                </li>
+                                <li class="d-flex">
+                                    <i class="fi-phone text-primary fs-sm mt-1 me-2"></i>
+                                    <span class="text-light">{{ punto.telefono }}</span>
+                                </li>
+                                <li class="d-flex">
+                                    <i class="fi-mail text-primary fs-sm mt-1 me-2"></i>
+                                    <span class="text-light">{{ punto.email }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

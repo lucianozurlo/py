@@ -1,0 +1,15 @@
+{% extends 'CarDealerApp/base_carga.html' %}
+{% load static %}
+
+{% block title %}Cargar punto de retiro{% endblock title %}
+
+{% block h2 %}Cargar punto de retiro:{% endblock h2 %}
+
+{% block form %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ nuevoPuntoDeRetiro.as_div }}
+
+    <input type="submit" value="Guardar">
+</form>
+{% endblock form %}

@@ -1,0 +1,69 @@
+{% extends 'CarDealerApp/base.html' %}
+{% load static %}
+
+{% block title %} Flota {% endblock title %}
+
+{% block content %}
+<!-- Page content-->
+<div class="container mt-5 mb-md-4 py-5">
+    <div class="row py-md-1">
+        <div class="col-lg-12">
+            <div class="align-items-center justify-content-between pt-4 mb-2">
+                <h1 class="mb-lg-4 text-light">Flota</h1>
+                <p class="mb-4 pb-lg-3 fs-lg text-light opacity-70">We believe that car buying and selling
+                    should be straight-forward and enjoyable, not time-consuming, complicated or stressful.</p>
+            </div>
+
+            <div class="row">
+
+                {% for vehiculo in flota %}
+                <div class="col-sm-4 mb-4">
+                    <div class="card card-light card-hover h-100">
+                        <div class="tns-carousel-wrapper card-img-top card-img-hover">
+                            <div class="tns-carousel-inner">
+                                <img src="{% static 'CarDealerApp/img/catalog/' %}{{ vehiculo.foto }}.jpg" alt="Image">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between pb-1">
+                                <span class="fs-sm text-light me-3">{{ vehiculo.anio }}</span>
+                            </div>
+                            <h3 class="h6 mb-1">
+                                <a class="nav-link-light" href="#">{{ vehiculo.marcaModelo }}</a>
+                            </h3>
+                            <div class="text-primary fw-bold mb-1">$ {{ vehiculo.costo }}</div>
+                        </div>
+                        <div class="card-footer border-0 pt-0">
+                            <div class="border-top border-light pt-3">
+                                <div class="row g-2">
+                                    <div class="col me-sm-1">
+                                        <div class="bg-dark rounded text-center w-100 h-100 p-2">
+                                            <i class="fi-dashboard d-block h4 text-light mb-0 mx-center"></i>
+                                            <span class="fs-xs text-light">{{ vehiculo.km }} km</span>
+                                        </div>
+                                    </div>
+                                    <div class="col me-sm-1">
+                                        <div class="bg-dark rounded text-center w-100 h-100 p-2">
+                                            <i class="fi-gearbox d-block h4 text-light mb-0 mx-center"></i>
+                                            <span class="fs-xs text-light">{{ vehiculo.transmision }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="bg-dark rounded text-center w-100 h-100 p-2">
+                                            <i class="fi-petrol d-block h4 text-light mb-0 mx-center"></i>
+                                            <span class="fs-xs text-light">{{ vehiculo.combustible }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

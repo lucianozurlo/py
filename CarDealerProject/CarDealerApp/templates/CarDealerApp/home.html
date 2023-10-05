@@ -1,0 +1,38 @@
+{% extends 'CarDealerApp/base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<!-- Page content-->
+<section class="bg-position-top-center bg-repeat-0 pt-5 full-height"
+    style="background-image: url(/static/CarDealerApp/img/home.png); background-size: 1920px 630px;">
+    <div class="container pt-5">
+        <div class="row pt-lg-4 pt-xl-5">
+            <div class="col-lg-4 col-md-5 pt-3 pt-md-4 pt-lg-5">
+                <h1 class="display-4 text-light pb-2 mb-4 me-md-n5">Easy way to find the right car</h1>
+                <p class="fs-lg text-light opacity-70">Finder is a leading digital marketplace for the
+                    automotive industry that connects car shoppers with sellers. </p>
+                <form class="form-group form-group-light d-block" style="margin-top: 60px;" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="input-group border-end-lg border-light">
+                                <span class="input-group-text text-muted ps-2 ps-sm-3">
+                                    {{formBuscar.as_div }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="display: flex; align-items: center;">
+                            <button class="btn btn-primary w-100" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-8 col-md-7 pt-md-5">
+                <img class="d-block mt-4 ms-auto" src="{% static 'CarDealerApp/img/home-img.png' %}" width="800"
+                    alt="Car">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

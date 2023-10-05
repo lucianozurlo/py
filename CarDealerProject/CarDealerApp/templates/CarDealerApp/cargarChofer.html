@@ -1,0 +1,15 @@
+{% extends 'CarDealerApp/base_carga.html' %}
+{% load static %}
+
+{% block title %}Cargar choferes{% endblock title %}
+
+{% block h2 %}Cargar nuevo chofer:{% endblock h2 %}
+
+{% block form %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ nuevoChofer.as_div }}
+
+    <input type="submit" value="Guardar">
+</form>
+{% endblock form %}

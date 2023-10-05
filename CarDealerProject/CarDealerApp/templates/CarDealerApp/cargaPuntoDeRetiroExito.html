@@ -1,0 +1,28 @@
+{% extends 'CarDealerApp/base.html' %}
+{% load static %}
+
+{% block title %} ¡Nuevo punto de retiro cargado! {% endblock title %}
+
+{% block content %}
+<!-- Page content-->
+<div class="container mt-5 mb-md-4 py-5">
+    <div class="row py-md-1">
+        <div class="col-lg-12">
+            <div class="align-items-center justify-content-between pt-4 mb-2 mt-5">
+                <h1 class="mb-lg-4 text-light">¡Nuevo punto de retiro cargado con éxito!</h1>
+                <p class="mb-4 pb-lg-3 fs-lg text-light opacity-70 mb-5">En unos segundos te redirigiremos a la base de
+                    puntos de retiro...</p>
+            </div>
+
+            <script>
+                // Espera 1 segundo y va al listado
+                setTimeout(function () {
+                    window.location.href = '../puntosDeRetiro';
+                }, 2000);
+
+            </script>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

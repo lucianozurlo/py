@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>{% block title %}Base{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'CarDealerApp/assets/favicon.ico' %}" type="image/x-icon">
+
+    <script>
+        (function () {
+            window.onload = function () {
+                var preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 2000);
+            };
+        })();
+    </script>
+
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/vendor/simplebar/dist/simplebar.min.css' %}" />
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/vendor/tiny-slider/dist/tiny-slider.css' %}" />
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/css/theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CarDealerApp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'CarDealerApp/css/custom.css' %}">
+</head>
+
+<body class="bg-dark">
+    <button class="btn btn-icon btn-light rounded-circle shadow position-fixed top-50 end-0 translate-middle-y me-3"
+        type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Cargar datos..." style="z-index: 1035;">
+        <span
+            class="d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+            data-bs-toggle="offcanvas" data-bs-target="#cargar-contenido">
+            <i class="fi-layers"></i></span></button>
+    <div class="offcanvas offcanvas-end" id="cargar-contenido">
+        <div class="offcanvas-header d-block border-bottom">
+            <div class="d-flex align-items-center justify-content-between">
+                <h2 class="h5 mb-0">Cargar datos...</h2>
+                <button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
+            </div>
+        </div>
+        <div class="offcanvas-body">
+            <div class="card card-hover shadow-sm mb-4">
+                <img class="card-img-top" src="{% static 'CarDealerApp/img/cargarFlota.jpg' %}">
+                <div class="card-body p-3">
+                    <h3 class="fs-base card-title text-center">
+                        <a class="nav-link stretched-link" href="{% url 'CargarFlota' %}">Flota</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card card-hover shadow-sm mb-4">
+                <img class="card-img-top" src="{% static 'CarDealerApp/img/cargarChoferes.jpg' %}">
+                <div class="card-body p-3">
+                    <h3 class="fs-base card-title text-center">
+                        <a class="nav-link stretched-link" href="{% url 'CargarChofer' %}">Choferes</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card card-hover shadow-sm mb-4">
+                <img class="card-img-top" src="{% static 'CarDealerApp/img/cargarPuntosDeRetiro.jpg' %}">
+                <div class="card-body p-3">
+                    <h3 class="fs-base card-title text-center">
+                        <a class="nav-link stretched-link" href="{% url 'CargarPuntoDeRetiro' %}">Puntos de Retiro</a>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div>
+            <span>Cargando...</span>
+        </div>
+    </div>
+
+    <main class="page-wrapper">
+
+        <!-- Navbar-->
+        <header class="navbar navbar-expand-lg navbar-dark fixed-top" data-scroll-header>
+            <div class="container">
+                <img class="d-block" src="{% static 'CarDealerApp/img/logoCarDealer.svg' %}" width="116" alt="Finder">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse order-lg-2" id="navbarNav" style="justify-content: flex-end;">
+                    <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
+                        <!-- Menu items-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Flota' %}">Flota</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Choferes' %}">Choferes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'PuntosDeRetiro' %}">Puntos de Retiro</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock content %}
+
+    </main>
+
+    <!-- Footer-->
+    <footer class="footer bg-faded-light">
+        <div class="container pt-4 pb-3 pt-lg-5 pb-lg-5 align-items-center justify-content-between fs-sm pb-3">
+            <p class="text-center mb-lg-0">
+                <span class="text-light opacity-50">&copy; Copyright 2023.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="{% static 'CarDealerApp/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'CarDealerApp/vendor/simplebar/dist/simplebar.min.js' %}"></script>
+    <script src="{% static 'CarDealerApp/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %}"></script>
+    <script src="{% static 'CarDealerApp/vendor/tiny-slider/dist/min/tiny-slider.js' %}"></script>
+    <script src="{% static 'CarDealerApp/vendor/jarallax/dist/jarallax.min.js' %}"></script>
+    <script src="{% static 'CarDealerApp/vendor/rellax/rellax.min.js' %}"></script>
+    <script src="{% static 'CarDealerApp/js/theme.min.js' %}"></script>
+</body>
+
+</html>

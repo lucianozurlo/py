@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>{% block title %}Base{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'CarDealerApp/assets/favicon.ico' %}" type="image/x-icon">
+
+    <script>
+        (function () {
+            window.onload = function () {
+                var preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 2000);
+            };
+        })();
+    </script>
+
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/vendor/simplebar/dist/simplebar.min.css' %}" />
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/vendor/tiny-slider/dist/tiny-slider.css' %}" />
+    <link rel="stylesheet" media="screen" href="{% static 'CarDealerApp/css/theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CarDealerApp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'CarDealerApp/css/custom.css' %}">
+</head>
+
+<body class="bg-dark">
+
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+    <main class="page-wrapper">
+        <!-- Page content-->
+        <div class="container-fluid d-flex h-100 align-items-center justify-content-center py-4 py-sm-5">
+            <div class="card card-light card-body" style="max-width: 940px">
+                <div class="row mx-0 align-items-center">
+                    <div class="col-md-6 border-end-md border-light p-2 p-sm-5">
+                        <h2 class="h3 text-light mb-4 mb-sm-5">{% block h2 %}Base{% endblock h2 %}</h2>
+                        <img class="d-block mx-auto" src="{% static 'CarDealerApp/img/cargar.svg' %}" width="344"
+                            alt="Illustartion">
+                        <div class="text-light mt-sm-4 pt-md-3">
+                            <a id="volver" class="text-light" href="#">
+                                < Volver</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-2 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+
+                        {% block form %}
+                        {% endblock form %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="js/theme.min.js"></script>
+</body>
+
+<script>
+    document.getElementById('volver').addEventListener('click', function (event) {
+        event.preventDefault();
+        window.history.back();
+    });
+</script>
+
+</html>

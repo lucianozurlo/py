@@ -1,0 +1,38 @@
+{% extends 'CarDealerApp/base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<!-- Page content-->
+<div class="container mt-5 mb-md-4 py-5">
+    <div class="row py-md-1">
+        <div class="col-lg-12">
+
+            <div class="align-items-center justify-content-between pt-4 mb-2">
+                <h1 class="mb-lg-4 text-light">Choferes</h1>
+                <p class="mb-4 pb-lg-3 fs-lg text-light opacity-70">We believe that car buying and selling
+                    should be straight-forward and enjoyable, not time-consuming, complicated or stressful.</p>
+            </div>
+
+            <div class="row">
+
+                {% for chofer in choferes %}
+                <div class="col-sm-3 mb-4">
+                    <div class="card border-0 shadow-sm mt-md-4">
+                        <img class="card-img-top" src="{% static 'CarDealerApp/img/team/' %}{{ chofer.foto }}.jpg">
+                        <div class="card-body text-center">
+                            <h3 class="h5 card-title mb-2">{{ chofer.nombre }} {{ chofer.apellido }}</h3>
+                            <span class="d-inline-block mb-3 fs-sm">{{ chofer.puesto }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
